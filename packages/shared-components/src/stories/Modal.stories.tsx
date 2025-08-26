@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Modal from '../components/Modal';
 import Button from '../components/Button';
 
@@ -33,17 +33,13 @@ const ModalWrapper = (args: any) => {
   return (
     <div>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal
-        {...args}
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 };
 
 export const Basic: Story = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: args => <ModalWrapper {...args} />,
   args: {
     title: 'Basic Modal',
     children: 'This is a basic modal with some content.',
@@ -51,7 +47,7 @@ export const Basic: Story = {
 };
 
 export const Small: Story = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: args => <ModalWrapper {...args} />,
   args: {
     title: 'Small Modal',
     size: 'small',
@@ -60,7 +56,7 @@ export const Small: Story = {
 };
 
 export const Large: Story = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: args => <ModalWrapper {...args} />,
   args: {
     title: 'Large Modal',
     size: 'large',
@@ -77,14 +73,14 @@ export const Large: Story = {
 };
 
 export const WithoutTitle: Story = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: args => <ModalWrapper {...args} />,
   args: {
     children: 'This modal has no title.',
   },
 };
 
 export const ComplexContent: Story = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: args => <ModalWrapper {...args} />,
   args: {
     title: 'Complex Modal',
     size: 'large',
@@ -107,14 +103,17 @@ export const ComplexContent: Story = {
 };
 
 export const FormModal: Story = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: args => <ModalWrapper {...args} />,
   args: {
     title: 'Form Modal',
     size: 'medium',
     children: (
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={e => e.preventDefault()}>
         <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
+          <label
+            htmlFor="name"
+            style={{ display: 'block', marginBottom: '0.5rem' }}
+          >
             Name:
           </label>
           <input
@@ -130,7 +129,10 @@ export const FormModal: Story = {
           />
         </div>
         <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>
+          <label
+            htmlFor="email"
+            style={{ display: 'block', marginBottom: '0.5rem' }}
+          >
             Email:
           </label>
           <input
@@ -145,7 +147,9 @@ export const FormModal: Story = {
             placeholder="Enter your email"
           />
         </div>
-        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+        <div
+          style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}
+        >
           <Button variant="outline" type="button">
             Cancel
           </Button>
@@ -161,7 +165,7 @@ export const FormModal: Story = {
 export const AllSizes: Story = {
   render: () => {
     const [openModal, setOpenModal] = useState<string | null>(null);
-    
+
     const openModalHandler = (size: string) => setOpenModal(size);
     const closeModal = () => setOpenModal(null);
 
@@ -170,7 +174,7 @@ export const AllSizes: Story = {
         <Button onClick={() => openModalHandler('small')}>Small Modal</Button>
         <Button onClick={() => openModalHandler('medium')}>Medium Modal</Button>
         <Button onClick={() => openModalHandler('large')}>Large Modal</Button>
-        
+
         <Modal
           isOpen={openModal === 'small'}
           onClose={closeModal}
@@ -179,7 +183,7 @@ export const AllSizes: Story = {
         >
           This is a small modal.
         </Modal>
-        
+
         <Modal
           isOpen={openModal === 'medium'}
           onClose={closeModal}
@@ -188,7 +192,7 @@ export const AllSizes: Story = {
         >
           This is a medium modal.
         </Modal>
-        
+
         <Modal
           isOpen={openModal === 'large'}
           onClose={closeModal}
@@ -201,4 +205,3 @@ export const AllSizes: Story = {
     );
   },
 };
-

@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import TaskForm from '../components/TaskForm';
 
 const meta: Meta<typeof TaskForm> = {
@@ -20,7 +21,8 @@ type Story = StoryObj<typeof meta>;
 const sampleTask = {
   id: '1',
   title: 'Complete project documentation',
-  description: 'Write comprehensive documentation for the Forsyth Barr UI components',
+  description:
+    'Write comprehensive documentation for the Forsyth Barr UI components',
   dueDate: '2024-01-15',
   priority: 'high' as const,
   status: 'in progress' as const,
@@ -45,7 +47,8 @@ export const TaskWithAllFields: Story = {
     task: {
       id: '2',
       title: 'Implement user authentication',
-      description: 'Add secure user authentication and authorization system with JWT tokens and role-based access control',
+      description:
+        'Add secure user authentication and authorization system with JWT tokens and role-based access control',
       dueDate: '2024-01-20',
       priority: 'high',
       status: 'pending',
@@ -90,7 +93,8 @@ export const CompletedTask: Story = {
     task: {
       id: '5',
       title: 'Setup testing environment',
-      description: 'Configure Jest and React Testing Library for component testing',
+      description:
+        'Configure Jest and React Testing Library for component testing',
       dueDate: '2024-01-10',
       priority: 'medium',
       status: 'completed',
@@ -101,15 +105,17 @@ export const CompletedTask: Story = {
 };
 
 export const FormInModal: Story = {
-  render: (args) => (
-    <div style={{ 
-      padding: '2rem', 
-      backgroundColor: 'var(--color-background)', 
-      border: '1px solid var(--color-border)',
-      borderRadius: '8px',
-      maxWidth: '600px',
-      width: '100%'
-    }}>
+  render: args => (
+    <div
+      style={{
+        padding: '2rem',
+        backgroundColor: 'var(--color-background)',
+        border: '1px solid var(--color-border)',
+        borderRadius: '8px',
+        maxWidth: '600px',
+        width: '100%',
+      }}
+    >
       <h2 style={{ marginBottom: '1rem' }}>Edit Task</h2>
       <TaskForm {...args} />
     </div>
@@ -120,7 +126,7 @@ export const FormInModal: Story = {
 };
 
 export const FormWithValidation: Story = {
-  render: (args) => {
+  render: args => {
     const handleSubmit = (data: any) => {
       console.log('Form submitted with data:', data);
       // Simulate validation error
@@ -137,4 +143,3 @@ export const FormWithValidation: Story = {
     task: undefined,
   },
 };
-

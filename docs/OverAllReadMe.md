@@ -159,6 +159,44 @@ This is a monorepo workspace containing multiple React applications and a shared
 - **Output**: `storybook-static` folder with static files
 - **Note**: Used internally by deployment scripts
 
+#### `npm run ci`
+- **Purpose**: Runs complete CI pipeline locally
+- **Function**: Executes linting, tests, and builds for CI environment
+- **Usage**: `npm run ci`
+- **Process**: 
+  1. Runs ESLint across all packages
+  2. Runs unit tests for shared-components
+  3. Builds shared-components library
+  4. Builds task-management application
+- **Note**: Used by GitHub Actions workflow
+
+### GitHub Actions CI/CD
+
+The project includes automated CI/CD pipeline via GitHub Actions:
+
+#### **Workflow File**: `.github/workflows/deploy.yml`
+
+#### **Triggers**:
+- Push to `main` or `master` branch
+- Pull Request to `main` or `master` branch
+
+#### **Test Job** (runs on every push/PR):
+- Linting with ESLint
+- Unit tests for shared-components (164 tests)
+- E2E tests for task-management with Playwright
+- Build verification for all packages
+
+#### **Deploy Job** (runs only on main/master after tests pass):
+- Deploys task-management to `/task-management` sub-path
+- Deploys Storybook to `/storybook` sub-path
+- Comments deployment URLs on PRs
+
+#### **Deployment URLs**:
+- **Task Management**: https://hszeng.github.io/react-boilerplate/task-management/
+- **Storybook**: https://hszeng.github.io/react-boilerplate/storybook/
+
+For detailed information, see [GitHub Actions Documentation](docs/GITHUB_ACTIONS.md).
+
 ### Server and API Scripts
 
 #### `npm run start:all`

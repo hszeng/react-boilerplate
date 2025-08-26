@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import TaskCard from '../components/TaskCard';
 
 const meta: Meta<typeof TaskCard> = {
@@ -20,7 +21,8 @@ type Story = StoryObj<typeof meta>;
 const baseTask = {
   id: '1',
   title: 'Complete project documentation',
-  description: 'Write comprehensive documentation for the Forsyth Barr UI components',
+  description:
+    'Write comprehensive documentation for the Forsyth Barr UI components',
   dueDate: '2024-01-15',
   priority: 'high' as const,
   status: 'in progress' as const,
@@ -40,7 +42,8 @@ export const PendingTask: Story = {
       ...baseTask,
       id: '2',
       title: 'Review code quality',
-      description: 'Perform code review and ensure all components meet quality standards',
+      description:
+        'Perform code review and ensure all components meet quality standards',
       status: 'pending',
       priority: 'medium',
     },
@@ -53,7 +56,8 @@ export const CompletedTask: Story = {
       ...baseTask,
       id: '3',
       title: 'Setup testing environment',
-      description: 'Configure Jest and React Testing Library for component testing',
+      description:
+        'Configure Jest and React Testing Library for component testing',
       status: 'completed',
       priority: 'low',
     },
@@ -149,13 +153,20 @@ export const AllTaskStates: Story = {
     ];
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '400px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: '400px',
+        }}
+      >
         {tasks.map(task => (
           <TaskCard
             key={task.id}
             task={task}
-            onEdit={(task) => console.log('Edit task:', task)}
-            onDelete={(id) => console.log('Delete task:', id)}
+            onEdit={task => console.log('Edit task:', task)}
+            onDelete={id => console.log('Delete task:', id)}
           />
         ))}
       </div>
@@ -199,17 +210,23 @@ export const AllPriorities: Story = {
     ];
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '400px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: '400px',
+        }}
+      >
         {tasks.map(task => (
           <TaskCard
             key={task.id}
             task={task}
-            onEdit={(task) => console.log('Edit task:', task)}
-            onDelete={(id) => console.log('Delete task:', id)}
+            onEdit={task => console.log('Edit task:', task)}
+            onDelete={id => console.log('Delete task:', id)}
           />
         ))}
       </div>
     );
   },
 };
-

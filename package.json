@@ -27,7 +27,8 @@
     "deploy:storybook": "npm run build:shared && npm run build-storybook --workspace=packages/shared-components && npx gh-pages --dist packages/shared-components/storybook-static --dest storybook --no-history",
     "deploy:all": "npm run deploy:task-management && npm run deploy:storybook",
     "build-storybook": "npm run build-storybook --workspace=packages/shared-components",
-    "storybook": "npm run storybook --workspace=packages/shared-components"
+    "storybook": "npm run storybook --workspace=packages/shared-components",
+    "ci": "npm run lint && npm run test && npm run build:shared && npm run build:task-management"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",

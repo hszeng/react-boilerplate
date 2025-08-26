@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Select from '../components/Select';
 
 const meta: Meta<typeof Select> = {
@@ -26,11 +26,7 @@ type Story = StoryObj<typeof meta>;
 const SelectWrapper = (args: any) => {
   const [value, setValue] = useState(args.value || '');
   return (
-    <Select
-      {...args}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
+    <Select {...args} value={value} onChange={e => setValue(e.target.value)} />
   );
 };
 
@@ -63,7 +59,7 @@ const statusOptions = [
 ];
 
 export const Basic: Story = {
-  render: (args) => <SelectWrapper {...args} />,
+  render: args => <SelectWrapper {...args} />,
   args: {
     id: 'basic-select',
     label: 'Select Fruit',
@@ -74,7 +70,7 @@ export const Basic: Story = {
 };
 
 export const WithValue: Story = {
-  render: (args) => <SelectWrapper {...args} />,
+  render: args => <SelectWrapper {...args} />,
   args: {
     id: 'with-value-select',
     label: 'Select Color',
@@ -85,7 +81,7 @@ export const WithValue: Story = {
 };
 
 export const Required: Story = {
-  render: (args) => <SelectWrapper {...args} />,
+  render: args => <SelectWrapper {...args} />,
   args: {
     id: 'required-select',
     label: 'Priority',
@@ -97,7 +93,7 @@ export const Required: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <SelectWrapper {...args} />,
+  render: args => <SelectWrapper {...args} />,
   args: {
     id: 'disabled-select',
     label: 'Status',
@@ -109,7 +105,7 @@ export const Disabled: Story = {
 };
 
 export const WithoutLabel: Story = {
-  render: (args) => <SelectWrapper {...args} />,
+  render: args => <SelectWrapper {...args} />,
   args: {
     id: 'no-label-select',
     options: fruitOptions,
@@ -119,7 +115,7 @@ export const WithoutLabel: Story = {
 };
 
 export const WithoutPlaceholder: Story = {
-  render: (args) => <SelectWrapper {...args} />,
+  render: args => <SelectWrapper {...args} />,
   args: {
     id: 'no-placeholder-select',
     label: 'Select Option',
@@ -142,7 +138,14 @@ export const AllSelects: Story = {
     };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: '300px',
+        }}
+      >
         <Select
           id="fruit"
           label="Select Fruit"
@@ -193,7 +196,14 @@ export const TaskManagementExample: Story = {
     };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: '300px',
+        }}
+      >
         <h3>Task Management Form</h3>
         <Select
           id="task-priority"
@@ -213,7 +223,14 @@ export const TaskManagementExample: Story = {
           onChange={handleChange('status')}
           required
         />
-        <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
+        <div
+          style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            backgroundColor: '#f5f5f5',
+            borderRadius: '4px',
+          }}
+        >
           <strong>Selected Values:</strong>
           <div>Priority: {values.priority || 'Not selected'}</div>
           <div>Status: {values.status || 'Not selected'}</div>
@@ -222,4 +239,3 @@ export const TaskManagementExample: Story = {
     );
   },
 };
-

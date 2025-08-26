@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Form from '../components/Form';
 import Input from '../components/Input';
 import Select from '../components/Select';
@@ -32,7 +33,7 @@ const statusOptions = [
 ];
 
 export const BasicForm: Story = {
-  render: (args) => (
+  render: args => (
     <Form {...args}>
       <Input
         id="name"
@@ -62,7 +63,7 @@ export const BasicForm: Story = {
 };
 
 export const FormWithoutTitle: Story = {
-  render: (args) => (
+  render: args => (
     <Form {...args}>
       <Input
         id="username"
@@ -88,7 +89,7 @@ export const FormWithoutTitle: Story = {
 };
 
 export const ComplexForm: Story = {
-  render: (args) => (
+  render: args => (
     <Form {...args}>
       <Input
         id="title"
@@ -108,7 +109,9 @@ export const ComplexForm: Story = {
         onChange={() => {}}
         rows={3}
       />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div
+        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}
+      >
         <Select
           id="priority"
           label="Priority"
@@ -134,7 +137,9 @@ export const ComplexForm: Story = {
         onChange={() => {}}
         required
       />
-      <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+      <div
+        style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}
+      >
         <Button type="button" variant="outline">
           Cancel
         </Button>
@@ -151,7 +156,7 @@ export const ComplexForm: Story = {
 };
 
 export const FormWithValidation: Story = {
-  render: (args) => (
+  render: args => (
     <Form {...args}>
       <Input
         id="email"
@@ -195,7 +200,7 @@ export const FormWithValidation: Story = {
 };
 
 export const FormWithSelects: Story = {
-  render: (args) => (
+  render: args => (
     <Form {...args}>
       <Select
         id="country"
@@ -235,7 +240,7 @@ export const FormWithSelects: Story = {
 };
 
 export const ResponsiveForm: Story = {
-  render: (args) => (
+  render: args => (
     <div style={{ width: '100%', maxWidth: '600px' }}>
       <Form {...args}>
         <Input
@@ -271,7 +276,9 @@ export const ResponsiveForm: Story = {
           onChange={() => {}}
           rows={3}
         />
-        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+        <div
+          style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}
+        >
           <Button type="button" variant="outline">
             Cancel
           </Button>
@@ -287,4 +294,3 @@ export const ResponsiveForm: Story = {
     subtitle: 'Update your profile information',
   },
 };
-

@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Button from '../components/Button';
 
 const meta: Meta<typeof Button> = {
@@ -11,7 +12,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'outline', 'danger', 'success', 'warning'],
+      options: [
+        'primary',
+        'secondary',
+        'outline',
+        'danger',
+        'success',
+        'warning',
+      ],
     },
     size: {
       control: { type: 'select' },
@@ -96,4 +104,3 @@ export const AllSizes: Story = {
     </div>
   ),
 };
-

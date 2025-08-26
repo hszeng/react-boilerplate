@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Input from '../components/Input';
 
 const meta: Meta<typeof Input> = {
@@ -30,16 +30,12 @@ type Story = StoryObj<typeof meta>;
 const InputWrapper = (args: any) => {
   const [value, setValue] = useState(args.value || '');
   return (
-    <Input
-      {...args}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
+    <Input {...args} value={value} onChange={e => setValue(e.target.value)} />
   );
 };
 
 export const Text: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'text-input',
     type: 'text',
@@ -50,7 +46,7 @@ export const Text: Story = {
 };
 
 export const Email: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'email-input',
     type: 'email',
@@ -61,7 +57,7 @@ export const Email: Story = {
 };
 
 export const Password: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'password-input',
     type: 'password',
@@ -72,7 +68,7 @@ export const Password: Story = {
 };
 
 export const Number: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'number-input',
     type: 'number',
@@ -83,7 +79,7 @@ export const Number: Story = {
 };
 
 export const Date: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'date-input',
     type: 'date',
@@ -93,7 +89,7 @@ export const Date: Story = {
 };
 
 export const Textarea: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'textarea-input',
     type: 'textarea',
@@ -105,7 +101,7 @@ export const Textarea: Story = {
 };
 
 export const WithError: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'error-input',
     type: 'text',
@@ -117,7 +113,7 @@ export const WithError: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'disabled-input',
     type: 'text',
@@ -129,7 +125,7 @@ export const Disabled: Story = {
 };
 
 export const Required: Story = {
-  render: (args) => <InputWrapper {...args} />,
+  render: args => <InputWrapper {...args} />,
   args: {
     id: 'required-input',
     type: 'text',
@@ -156,7 +152,14 @@ export const AllTypes: Story = {
     };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: '300px',
+        }}
+      >
         <Input
           id="text"
           type="text"
@@ -209,4 +212,3 @@ export const AllTypes: Story = {
     );
   },
 };
-

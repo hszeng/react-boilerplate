@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Card from '../components/Card';
 
 const meta: Meta<typeof Card> = {
@@ -89,4 +90,3 @@ export const AllPaddingVariants: Story = {
     </div>
   ),
 };
-
