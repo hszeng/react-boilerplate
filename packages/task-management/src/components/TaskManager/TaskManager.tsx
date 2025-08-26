@@ -10,6 +10,7 @@ import {
   Modal,
   SelectOption,
 } from '@forsyth-barr/ui-components';
+import { useTheme } from '../../contexts/ThemeContext';
 import styles from './TaskManager.module.css';
 
 // Define proper types for component props
@@ -166,6 +167,7 @@ const TaskFilters = ({
 };
 
 const TaskManager = () => {
+  const { theme, toggleTheme } = useTheme();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
@@ -347,6 +349,17 @@ const TaskManager = () => {
     <div className={styles.taskManager}>
       <header className={styles.header}>
         <h1>Task Manager</h1>
+        <Button
+          variant="outline"
+          size="medium"
+          onClick={toggleTheme}
+          className={styles.themeToggle}
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+          <span className={styles.themeText}>
+            {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+          </span>
+        </Button>
       </header>
 
       {error && (
