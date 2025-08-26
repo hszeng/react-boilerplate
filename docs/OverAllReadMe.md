@@ -109,7 +109,55 @@ This is a monorepo workspace containing multiple React applications and a shared
 - **Purpose**: Builds the example project showcase
 - **Function**: Creates production build for another-project-example package
 - **Usage**: `npm run build:another-project`
-- **Output**: Optimized bundle for the example project
+- **Output**: Dist folder with compiled application
+
+### Deployment Scripts
+
+#### `npm run deploy:task-management`
+- **Purpose**: Deploys the task management application to GitHub Pages
+- **Function**: Builds task-management and deploys to `/task-management` sub-path
+- **Usage**: `npm run deploy:task-management`
+- **URL**: https://hszeng.github.io/react-boilerplate/task-management
+- **Process**: 
+  1. Builds task-management application
+  2. Deploys to gh-pages branch under `/task-management` directory
+  3. Uses `--no-history` flag for clean deployment
+
+#### `npm run deploy:storybook`
+- **Purpose**: Deploys the Storybook documentation to GitHub Pages
+- **Function**: Builds shared-components and Storybook, then deploys to `/storybook` sub-path
+- **Usage**: `npm run deploy:storybook`
+- **URL**: https://hszeng.github.io/react-boilerplate/storybook
+- **Process**:
+  1. Builds shared-components library
+  2. Builds Storybook static files
+  3. Deploys to gh-pages branch under `/storybook` directory
+  4. Uses `--no-history` flag for clean deployment
+
+#### `npm run deploy:all`
+- **Purpose**: Deploys both task-management and Storybook to GitHub Pages
+- **Function**: Runs both deployment scripts sequentially
+- **Usage**: `npm run deploy:all`
+- **Process**:
+  1. Deploys task-management to `/task-management`
+  2. Deploys Storybook to `/storybook`
+- **Note**: This is the recommended command for deploying both applications
+
+### Storybook Scripts
+
+#### `npm run storybook`
+- **Purpose**: Starts Storybook development server
+- **Function**: Runs Storybook dev server for shared-components
+- **Usage**: `npm run storybook`
+- **Port**: 6006
+- **Features**: Hot reload, component documentation
+
+#### `npm run build-storybook`
+- **Purpose**: Builds Storybook static files
+- **Function**: Creates production build of Storybook documentation
+- **Usage**: `npm run build-storybook`
+- **Output**: `storybook-static` folder with static files
+- **Note**: Used internally by deployment scripts
 
 ### Server and API Scripts
 

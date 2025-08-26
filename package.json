@@ -22,7 +22,12 @@
     "build:another-project": "npm run build --workspace=packages/another-project-example",
     "start:all": "node tools/scripts/start-all.js",
     "api:server": "npm run server --workspace=packages/task-management",
-    "check-node": "node scripts/check-node-version.js"
+    "check-node": "node scripts/check-node-version.js",
+    "deploy:task-management": "npm run build:task-management && npx gh-pages --dist packages/task-management/dist --dest task-management --no-history",
+    "deploy:storybook": "npm run build:shared && npm run build-storybook --workspace=packages/shared-components && npx gh-pages --dist packages/shared-components/storybook-static --dest storybook --no-history",
+    "deploy:all": "npm run deploy:task-management && npm run deploy:storybook",
+    "build-storybook": "npm run build-storybook --workspace=packages/shared-components",
+    "storybook": "npm run storybook --workspace=packages/shared-components"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
@@ -35,6 +40,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "gh-pages": "^6.1.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.6.2",
