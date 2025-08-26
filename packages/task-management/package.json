@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Task Manager Application",
   "private": true,
-  "homepage": "https://your-username.github.io/forsyth-barr/task-management",
+  "homepage": "https://hszeng.github.io/react-boilerplate/task-management",
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
