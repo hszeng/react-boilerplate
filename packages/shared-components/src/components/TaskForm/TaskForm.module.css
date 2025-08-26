@@ -1,0 +1,19 @@
+.taskForm {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .formActions {
+    flex-direction: column;
+  }
+}
